@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('calculator')">Calculator</button>
+            <button class="tab-btn" onclick="openTab('currency')">Currency Converter</button>
+            <button class="tab-btn" onclick="openTab('loan')">Loan Calculator</button>
+        </div>
+
+        <!-- Calculator Tab -->
+        <div id="calculator" class="tab-content active">
+            <div class="calculator">
+                <div class="display" id="calc-display">0</div>
+                <div class="buttons">
+                    <button class="btn operator" data-value="AC">AC</button>
+                    <button class="btn operator" data-value="DEL">DEL</button>
+                    <button class="btn memory" data-value="MC">MC</button>
+                    <button class="btn memory" data-value="MR">MR</button>
+                    <button class="btn memory" data-value="M+">M+</button>
+                    <button class="btn memory" data-value="M-">M-</button>
+                    <button class="btn operator" data-value="%">%</button>
+                    <button class="btn operator" data-value="/">÷</button>
+
+                    <button class="btn" data-value="7">7</button>
+                    <button class="btn" data-value="8">8</button>
+                    <button class="btn" data-value="9">9</button>
+                    <button class="btn operator" data-value="*">×</button>
+
+                    <button class="btn" data-value="4">4</button>
+                    <button class="btn" data-value="5">5</button>
+                    <button class="btn" data-value="6">6</button>
+                    <button class="btn operator" data-value="-">-</button>
+
+                    <button class="btn" data-value="1">1</button>
+                    <button class="btn" data-value="2">2</button>
+                    <button class="btn" data-value="3">3</button>
+                    <button class="btn operator" data-value="+">+</button>
+
+                    <button class="btn zero" data-value="0">0</button>
+                    <button class="btn" data-value=".">.</button>
+                    <button class="btn operator" data-value="sqrt">√</button>
+                    <button class="btn operator" data-value="^">^</button>
+                    <button class="btn operator" data-value="sin">sin</button>
+                    <button class="btn operator" data-value="cos">cos</button>
+                    <button class="btn operator" data-value="tan">tan</button>
+                    <button class="btn operator" data-value="log">log</button>
+                    <button class="btn operator" data-value="ln">ln</button>
+                    <button class="btn operator" data-value="!">!</button>
+                    <button class="btn equal" data-value="=">=</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Currency Converter Tab -->
+        <div id="currency" class="tab-content">
+            <h2>Currency Converter</h2>
+            <div class="converter">
+                <input type="number" id="amount" placeholder="Enter amount" oninput="convertCurrency()" />
+                <select id="from-currency" onchange="convertCurrency()">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="INR">INR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CAD">CAD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="JPY">JPY</option>
+                    <option value="CHF">CHF</option>
+                    <option value="SGD">SGD</option>
+                    <option value="CNY">CNY</option>
+                    <option value="ZAR">ZAR</option>
+                    <option value="AED">AED</option>
+                    <option value="BRL">BRL</option>
+                    <option value="KRW">KRW</option>
+                    <option value="NZD">NZD</option>
+                </select>
+                <span>to</span>
+                <select id="to-currency" onchange="convertCurrency()">
+                    <option value="INR">INR</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="CAD">CAD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="JPY">JPY</option>
+                    <option value="CHF">CHF</option>
+                    <option value="SGD">SGD</option>
+                    <option value="CNY">CNY</option>
+                    <option value="ZAR">ZAR</option>
+                    <option value="AED">AED</option>
+                    <option value="BRL">BRL</option>
+                    <option value="KRW">KRW</option>
+                    <option value="NZD">NZD</option>
+                </select>
+                <p id="converted-amount">Converted Amount: 0</p>
+            </div>
+        </div>
+
+        <!-- Loan Calculator Tab -->
+        <div id="loan" class="tab-content">
+            <h2>Loan Calculator</h2>
+            <div class="loan-calculator">
+                <div class="input-section">
+                    <label for="loan-type">Loan Type:</label>
+                    <select id="loan-type">
+                        <option value="home">Home Loan</option>
+                        <option value="car">Car Loan</option>
+                        <option value="personal">Personal Loan</option>
+                        <option value="education">Education Loan</option>
+                    </select>
+
+                    <label for="loan-amount">Loan Amount (INR):</label>
+                    <input type="number" id="loan-amount" placeholder="Enter loan amount in INR" />
+
+                    <label for="interest-rate">Annual Interest Rate (%):</label>
+                    <input type="number" id="interest-rate" placeholder="Enter interest rate" />
+
+                    <label for="loan-term">Loan Term (in months):</label>
+                    <input type="range" id="loan-term-slider" min="12" max="360" value="120" oninput="updateLoanTermValue()" />
+                    <span id="loan-term-value">120 months</span>
+
+                    <label for="prepayment">Prepayment (Optional):</label>
+                    <input type="number" id="prepayment" placeholder="Enter prepayment amount" />
+
+                    <button onclick="calculateLoan()">Calculate</button>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section">
+                    <div class="result-card">
+                        <h3>Monthly Payment</h3>
+                        <p><span id="monthly-payment-inr">₹0</span> / <span id="monthly-payment-usd">$0</span></p>
+                    </div>
+                    <div class="result-card">
+                        <h3>Total Interest</h3>
+                        <p><span id="total-interest-inr">₹0</span> / <span id="total-interest-usd">$0</span></p>
+                    </div>
+                    <div class="result-card">
+                        <h3>Total Payment</h3>
+                        <p><span id="total-payment-inr">₹0</span> / <span id="total-payment-usd">$0</span></p>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-bar">
+                    <div id="progress-fill" style="width: 0%;"></div>
+                </div>
+
+                <!-- Pie Chart -->
+                <canvas id="loan-chart"></canvas>
+
+                <!-- Bank Comparison Table -->
+                <div class="bank-comparison">
+                    <h3>Bank Interest Rates</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Bank</th>
+                                <th>Interest Rate (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bank A</td>
+                                <td>7.5%</td>
+                            </tr>
+                            <tr>
+                                <td>Bank B</td>
+                                <td>8.0%</td>
+                            </tr>
+                            <tr>
+                                <td>Bank C</td>
+                                <td>7.8%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

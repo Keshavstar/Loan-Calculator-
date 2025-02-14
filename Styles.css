@@ -1,0 +1,258 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    background: #ff9500;
+    padding: 10px 0;
+}
+
+.tab-btn {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.tab-btn.active {
+    background: #fff;
+    color: #ff9500;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Calculator */
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display {
+    width: 100%;
+    background: #252525;
+    color: #fff;
+    font-size: 2rem;
+    text-align: right;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.btn {
+    background: #e0e0e0;
+    border: none;
+    padding: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.btn:hover {
+    background: #d0d0d0;
+}
+
+.operator {
+    background: #ff9500;
+    color: white;
+}
+
+.operator:hover {
+    background: #e08900;
+}
+
+.equal {
+    background: #34c759;
+    color: white;
+    grid-column: span 1;
+}
+
+.equal:hover {
+    background: #2da94f;
+}
+
+.zero {
+    grid-column: span 2;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.memory {
+    background: #007bff;
+    color: white;
+}
+
+.memory:hover {
+    background: #0056b3;
+}
+
+/* Currency Converter */
+.converter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.converter input,
+.converter select,
+.loan-calculator input {
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: border 0.2s ease;
+}
+
+.converter input:focus,
+.converter select:focus,
+.loan-calculator input:focus {
+    border: 1px solid #ff9500;
+}
+
+.converter button,
+.loan-calculator button {
+    padding: 15px;
+    background: #ff9500;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.converter button:hover,
+.loan-calculator button:hover {
+    background: #e08900;
+}
+
+/* Loan Calculator */
+.loan-calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-section input[type="number"],
+.input-section select {
+    padding: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: border 0.2s ease;
+}
+
+.input-section input[type="range"] {
+    width: 100%;
+}
+
+#loan-term-value {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.results-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.result-card {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    flex: 1 1 calc(33% - 10px);
+    min-width: 100px;
+}
+
+.result-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background: #eee;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progress-fill {
+    height: 100%;
+    background: #ff9500;
+    transition: width 0.3s ease;
+}
+
+.bank-comparison table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.bank-comparison th,
+.bank-comparison td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.bank-comparison th {
+    background: #ff9500;
+    color: white;
+}
